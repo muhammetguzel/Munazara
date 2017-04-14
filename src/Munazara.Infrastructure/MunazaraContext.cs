@@ -1,9 +1,9 @@
-﻿using Munazara.Domain.Model;
-using Munazara.Infrastructure.Data.Mapping;
+﻿using Munazara.Data.Mapping;
+using Munazara.Domain.Model;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace Munazara.Infrastructure
+namespace Munazara.Data
 {
     public class MunazaraContext : DbContext
     {
@@ -16,7 +16,6 @@ namespace Munazara.Infrastructure
         public virtual DbSet<Topic> Topic { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Member> Member { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

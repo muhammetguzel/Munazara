@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Munazara.Infrastructure.Data.Repository
+namespace Munazara.Data.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

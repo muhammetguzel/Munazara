@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -47,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Requests\CreateTopicRequest.cs" />
+    <Compile Include="Data\ITopicService.cs" />
+    <Compile Include="Data\TopicService.cs" />
+    <Compile Include="IOC\IOCHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,14 +61,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Munazara.CrossCutting\Munazara.CrossCutting.csproj">
+      <Project>{e21c772d-f72f-48e5-831c-7c6195507aa1}</Project>
+      <Name>Munazara.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Munazara.Domain\Munazara.Domain.csproj">
       <Project>{1a72418e-56c3-4aef-bc2d-7ad24198b3d7}</Project>
       <Name>Munazara.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Munazara.Infrastructure\Munazara.Infrastructure.csproj">
+    <ProjectReference Include="..\Munazara.Infrastructure\Munazara.Data.csproj">
       <Project>{4d5ff8bc-508b-4776-bd7b-61353dc9fe6f}</Project>
-      <Name>Munazara.Infrastructure</Name>
+      <Name>Munazara.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,7 @@
 ﻿using Munazara.Domain.Model;
-using Munazara.Infrastructure.Data.Repository;
-
 using System.Linq;
 
-namespace Munazara.Infrastructure.Data.Repository
+namespace Munazara.Data.Repository
 {
     public static class MemberRepositoryExtensions
     {

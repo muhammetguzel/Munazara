@@ -7,8 +7,8 @@
     <ProjectGuid>{4D5FF8BC-508B-4776-BD7B-61353DC9FE6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Munazara.Infrastructure</RootNamespace>
-    <AssemblyName>Munazara.Infrastructure</AssemblyName>
+    <RootNamespace>Munazara.Data</RootNamespace>
+    <AssemblyName>Munazara.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,14 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Mapping\CategoryMapping.cs" />
-    <Compile Include="Data\Mapping\PostMapping.cs" />
-    <Compile Include="Data\Mapping\MemberMapping.cs" />
-    <Compile Include="Data\Mapping\TopicMapping.cs" />
-    <Compile Include="Data\Repository\MemberRepositoryExtensions.cs" />
-    <Compile Include="Data\Repository\GenericRepository.cs" />
-    <Compile Include="Data\Repository\IGenericRepository.cs" />
-    <Compile Include="Data\Repository\UnitOfWork.cs" />
+    <Compile Include="Mapping\CategoryMapping.cs" />
+    <Compile Include="Mapping\PostMapping.cs" />
+    <Compile Include="Mapping\MemberMapping.cs" />
+    <Compile Include="Mapping\TopicMapping.cs" />
+    <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\MemberRepositoryExtensions.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Migrations\201704141616362_Fist.cs" />
     <Compile Include="Migrations\201704141616362_Fist.Designer.cs">
       <DependentUpon>201704141616362_Fist.cs</DependentUpon>

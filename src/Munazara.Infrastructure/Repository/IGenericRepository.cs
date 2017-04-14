@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Munazara.Infrastructure.Data.Repository
+namespace Munazara.Data.Repository
 {
     public interface IGenericRepository<T> where T : class
     {

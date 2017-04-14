@@ -1,14 +1,18 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Munazara.Infrastructure.Data.Repository
+namespace Munazara.Data.Repository
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private MunazaraContext Context = new MunazaraContext();
+        private MunazaraContext Context;
         public Dictionary<Type, object> repositories = new Dictionary<Type, object>();
+
+        public UnitOfWork()
+        {
+            Context = new MunazaraContext();
+        }
 
         public IGenericRepository<T> Repository<T>() where T : class
         {

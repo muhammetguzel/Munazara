@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Munazara.Infrastructure.Data.Mapping
+namespace Munazara.Data.Mapping
 {
     public class CategoryMapping : EntityTypeConfiguration<Category>
     {
