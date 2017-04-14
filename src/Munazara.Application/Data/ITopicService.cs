@@ -4,6 +4,6 @@ namespace Munazara.Application.Data
 {
     public interface ITopicService
     {
-        void CreateTopic(CreateTopicRequest request);
+        int CreateTopic(CreateTopicRequest request);
     }
 }

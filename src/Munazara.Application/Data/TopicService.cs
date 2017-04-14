@@ -14,7 +14,7 @@ namespace Munazara.Application.Data
             this.uow = uow;
         }
 
-        public void CreateTopic(CreateTopicRequest request)
+        public int CreateTopic(CreateTopicRequest request)
         {
             Topic topic = new Topic()
             {
@@ -31,6 +31,8 @@ namespace Munazara.Application.Data
             });
             uow.Repository<Topic>().Add(topic);
             uow.SaveChanges();
+
+            return topic.Id;
         }
     }
 }

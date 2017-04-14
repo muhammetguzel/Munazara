@@ -12,6 +12,7 @@ namespace Munazara.Application.IOC
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<TopicService>().As<ITopicService>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>();
             return builder;
         }
     }
