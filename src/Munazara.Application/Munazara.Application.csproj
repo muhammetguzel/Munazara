@@ -65,13 +65,13 @@
       <Project>{e21c772d-f72f-48e5-831c-7c6195507aa1}</Project>
       <Name>Munazara.CrossCutting</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Munazara.Data\Munazara.Data.csproj">
+      <Project>{4d5ff8bc-508b-4776-bd7b-61353dc9fe6f}</Project>
+      <Name>Munazara.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Munazara.Domain\Munazara.Domain.csproj">
       <Project>{1a72418e-56c3-4aef-bc2d-7ad24198b3d7}</Project>
       <Name>Munazara.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Munazara.Infrastructure\Munazara.Data.csproj">
-      <Project>{4d5ff8bc-508b-4776-bd7b-61353dc9fe6f}</Project>
-      <Name>Munazara.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
