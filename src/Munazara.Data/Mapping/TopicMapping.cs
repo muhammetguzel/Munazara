@@ -13,8 +13,8 @@ namespace Munazara.Data.Mapping
 
             this.Property(x => x.CreateDate).HasColumnType("smalldatetime").IsRequired();
             this.Property(x => x.ReplyCount).IsRequired();
-            this.Property(x => x.Slug).HasMaxLength(150);
-            this.Property(x => x.Title).HasMaxLength(150);
+            this.Property(x => x.Slug).HasMaxLength(120);
+            this.Property(x => x.Title).HasMaxLength(120);
             this.Property(x => x.ViewCount).IsRequired();
 
             this.HasMany(x => x.Posts).WithRequired(x => x.Topic).HasForeignKey(x => x.TopicId).WillCascadeOnDelete(false);

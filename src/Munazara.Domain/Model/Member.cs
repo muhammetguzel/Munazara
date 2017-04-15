@@ -11,6 +11,8 @@ namespace Munazara.Domain.Model
             Type = MemberType.Standart;
             IsActive = false;
             IsBanned = false;
+            Topics = new HashSet<Topic>();
+            Posts = new HashSet<Post>();
         }
 
         public int Id { get; set; }

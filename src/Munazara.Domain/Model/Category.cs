@@ -5,6 +5,10 @@ namespace Munazara.Domain.Model
 {
     public class Category
     {
+        public Category()
+        {
+            Topics = new HashSet<Topic>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

@@ -1,0 +1,74 @@
+﻿@model Munazara.Web.Models.CreateTopicViewModel
+@{
+    ViewBag.Title = "Yeni Konu";
+}
+
+<div class="row pad-botm">
+    <div class="col-md-12">
+        <h4 class="header-line">@ViewBag.Title</h4>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-success">
+
+            <div class="panel-body">
+               @using (Html.BeginForm("Create", "Topic", FormMethod.Post))
+               {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Category)
+                        @Html.DropDownListFor(x => x.Category, Model.Categories, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Category, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Title)
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @*@Html.LabelFor(x => x.Content)*@
+                        @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Content, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <button type="submit" class="btn btn-info">Kaydet</button>
+
+               }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+    </script>
+}

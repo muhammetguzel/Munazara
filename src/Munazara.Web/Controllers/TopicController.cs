@@ -20,7 +20,7 @@ namespace Munazara.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+       
         public ActionResult Create()
         {
             CreateTopicViewModel model = new CreateTopicViewModel
@@ -31,7 +31,6 @@ namespace Munazara.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult Create(CreateTopicViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -42,7 +41,7 @@ namespace Munazara.Web.Controllers
                     {
                         CategoryId = viewModel.Category,
                         Content = viewModel.Content,
-                        MemberId = Convert.ToInt32(User.Identity.Name),
+                        MemberId =1,// Convert.ToInt32(User.Identity.Name),
                         Title = viewModel.Title
                     };
 

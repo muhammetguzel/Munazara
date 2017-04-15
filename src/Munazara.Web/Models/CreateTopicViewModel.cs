@@ -17,11 +17,12 @@ namespace Munazara.Web.Models
 
 
         [Required]
-        [DisplayName("Kagtegori")]
+        [DisplayName("Kategori")]
         public int Category { get; set; }
 
         [Required]
         [AllowHtml]
+        [DisplayName("İçerik")]
         public string Content { get; set; }
 
         public IEnumerable<SelectListItem> Categories { get; set; }

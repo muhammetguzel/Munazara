@@ -17,13 +17,13 @@ namespace Munazara.Web
 
             routes.MapRoute(
                 "Category",
-                "category/{slug}",
+                "c/{slug}",
                 new { controller = "Category", action = "Detail", slug = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 "Topic",
-                "topic/{slug}/{id}",
+                "t/{slug}-{id}",
                 new { controller = "Category", action = "Detail", slug = UrlParameter.Optional, id = UrlParameter.Optional }
             );
         }

@@ -10,6 +10,8 @@ namespace Munazara.Domain.Model
             ReplyCount = 0;
             ViewCount = 0;
             CreateDate = DateTime.Now;
+
+            Posts = new HashSet<Post>();
         }
 
         public int Id { get; set; }

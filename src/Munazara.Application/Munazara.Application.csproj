@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="Data\CategoryService.cs" />
     <Compile Include="Data\ICategoryService.cs" />
+    <Compile Include="Data\Reponses\CategoryIdNameColor.cs" />
     <Compile Include="Data\Reponses\GetCategoriesResponse.cs" />
+    <Compile Include="Data\Reponses\GetLastTopicsResponse.cs" />
     <Compile Include="Data\Requests\CreateTopicRequest.cs" />
     <Compile Include="Data\ITopicService.cs" />
     <Compile Include="Data\TopicService.cs" />

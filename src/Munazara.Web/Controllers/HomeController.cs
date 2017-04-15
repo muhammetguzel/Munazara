@@ -9,15 +9,16 @@ namespace Munazara.Web.Controllers
 {
     public class HomeController : Controller
     {
-       
-        public HomeController()
+        ITopicService topicService;
+        public HomeController(ITopicService topicService)
         {
-
+            this.topicService = topicService;
         }
         public ActionResult Index()
         {
+          var model=  topicService.GetLastTopics();
             
-            return View();
+            return View(model);
         }
 
         public ActionResult About()
