@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Munazara.Application.Data.Reponses
+﻿namespace Munazara.Application.DataService.Topic.Response
 {
     public class CategorySlugNameColor
     {

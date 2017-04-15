@@ -1,12 +1,8 @@
-﻿@model List<Munazara.Application.Data.Reponses.GetLastTopicsResponse>
+﻿@model List<Munazara.Application.DataService.Topic.Response.GetLastTopicsResponse>
 
 @{
     ViewBag.Title = "Son Konular";
 }
-
-
-
-
 
 <div class="row">
     <div class="col-md-12">
@@ -33,11 +29,8 @@
                             <td class="text-center">@topic.ViewCount</td>
                         </tr>
                     }
-
-
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>

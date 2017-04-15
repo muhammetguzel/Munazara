@@ -1,13 +1,4 @@
-﻿
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -23,7 +14,6 @@
 
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
 </head>
 <body>
     <div class="navbar navbar-inverse set-radius-zero">
@@ -35,28 +25,28 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                  
+
                     <img src="/Content/img/logo.png" />
                 </a>
-
             </div>
             @if (Request.IsAuthenticated)
             {
                 <div class="right-div">
-                    <a href="#" class="btn btn-info pull-right">ÇIKIŞ</a>
-
+                    @Html.ActionLink("ÇIKIŞ","Logout","Account", null,new {@class="btn btn-info pull-right" })
                 </div>
                 <div class="right-div">
-                    <a href="#" class="btn btn-success pull-right">Yeni Konu</a>
+                    @Html.ActionLink("Konu Başlat", "Create", "Topic",null, new { @class = "btn btn-success pull-right" })
                 </div>
             }
-            <div class="right-div">
-                <a href="#" class="btn btn-success pull-right">GİRİŞ</a>
-            </div>
-           
-
-
-
+            else
+            {
+                <div class="right-div">
+                    @Html.ActionLink("KAYIT", "Register", "Account", null, new { @class = "btn btn-info pull-right" })
+                </div>
+                <div class="right-div">
+                    @Html.ActionLink("GİRİŞ", "Login", "Account", null, new { @class = "btn btn-success pull-right" })
+                </div>
+            }
         </div>
     </div>
     <section class="menu-section">
@@ -68,8 +58,6 @@
                             <li>
                                 @Html.ActionLink("Anasayfa", "Index", "Home")
 
-
-                         
                             <li>
 
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Kategoriler <i class="fa fa-angle-down"></i></a>
@@ -78,13 +66,9 @@
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Öneri</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Falanlar Filanlar</a></li>
                                 </ul>
-                           
-                           
-
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -92,8 +76,6 @@
         <div class="container">
 
             @RenderBody()
-
-
         </div>
     </div>
     <section class="footer-section">
@@ -102,7 +84,6 @@
                 <div class="col-md-12">
                     &copy; 2014 Yourdomain.com |<a href="http://www.binarytheme.com/" target="_blank"> Designed by : binarytheme.com</a>
                 </div>
-
             </div>
         </div>
     </section>

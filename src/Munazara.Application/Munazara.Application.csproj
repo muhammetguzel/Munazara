@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,14 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\CategoryService.cs" />
-    <Compile Include="Data\ICategoryService.cs" />
-    <Compile Include="Data\Reponses\CategoryIdNameColor.cs" />
-    <Compile Include="Data\Reponses\GetCategoriesResponse.cs" />
-    <Compile Include="Data\Reponses\GetLastTopicsResponse.cs" />
-    <Compile Include="Data\Requests\CreateTopicRequest.cs" />
-    <Compile Include="Data\ITopicService.cs" />
-    <Compile Include="Data\TopicService.cs" />
+    <Compile Include="DataService\Category\CategoryService.cs" />
+    <Compile Include="DataService\Category\ICategoryService.cs" />
+    <Compile Include="DataService\Member\IMemberService.cs" />
+    <Compile Include="DataService\Member\MemberService.cs" />
+    <Compile Include="DataService\Member\Request\LoginRequest.cs" />
+    <Compile Include="DataService\Member\Request\RegisterRequest.cs" />
+    <Compile Include="DataService\Member\Response\LoginResponse.cs" />
+    <Compile Include="DataService\Topic\Response\CategoryIdNameColor.cs" />
+    <Compile Include="DataService\Category\Response\GetCategoriesResponse.cs" />
+    <Compile Include="DataService\Topic\Response\CreateTopicResponse.cs" />
+    <Compile Include="DataService\Topic\Response\GetLastTopicsResponse.cs" />
+    <Compile Include="DataService\Topic\Request\CreateTopicRequest.cs" />
+    <Compile Include="DataService\Topic\ITopicService.cs" />
+    <Compile Include="DataService\Topic\TopicService.cs" />
     <Compile Include="IOC\IOCHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +86,8 @@
       <Name>Munazara.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataService\Category\Request\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

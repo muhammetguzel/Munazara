@@ -1,12 +1,12 @@
-﻿using Munazara.Application.Data.Reponses;
-using Munazara.Application.Data.Requests;
+﻿using Munazara.Application.DataService.Topic.Request;
+using Munazara.Application.DataService.Topic.Response;
 using Munazara.CrossCutting.General;
 using Munazara.Data.Repository;
 using Munazara.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Munazara.Application.Data
+namespace Munazara.Application.DataService.Topic
 {
     public class TopicService : ITopicService
     {
@@ -17,9 +17,9 @@ namespace Munazara.Application.Data
             this.uow = uow;
         }
 
-        public int CreateTopic(CreateTopicRequest request)
+        public CreateTopicResponse CreateTopic(CreateTopicRequest request)
         {
-            Topic topic = new Topic()
+            Domain.Model.Topic topic = new Domain.Model.Topic()
             {
                 CategoryId = request.CategoryId,
                 MemberId = request.MemberId,
@@ -32,15 +32,19 @@ namespace Munazara.Application.Data
                 Content = request.Content,
                 MemberId = request.MemberId,
             });
-            uow.Repository<Topic>().Add(topic);
+            uow.Repository<Domain.Model.Topic>().Add(topic);
             uow.SaveChanges();
 
-            return topic.Id;
+            return new CreateTopicResponse()
+            {
+                Id = topic.Id,
+                Slug = topic.Slug
+            };
         }
 
         public List<GetLastTopicsResponse> GetLastTopics()
         {
-            return uow.Repository<Topic>().All().OrderByDescending(x=>x.CreateDate).Select(x => new GetLastTopicsResponse
+            return uow.Repository<Domain.Model.Topic>().All().OrderByDescending(x => x.CreateDate).Select(x => new GetLastTopicsResponse
             {
                 Category = new CategorySlugNameColor
                 {

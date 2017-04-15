@@ -1,5 +1,6 @@
-﻿using Munazara.Application.Data;
-using Munazara.Application.Data.Requests;
+﻿using Munazara.Application.DataService.Category;
+using Munazara.Application.DataService.Topic;
+using Munazara.Application.DataService.Topic.Request;
 using Munazara.Web.Models;
 using System;
 using System.Linq;
@@ -7,8 +8,7 @@ using System.Web.Mvc;
 
 namespace Munazara.Web.Controllers
 {
- 
-    public class TopicController :BaseController
+    public class TopicController : BaseController
     {
         private ITopicService topicService;
         private ICategoryService categoryService;
@@ -19,7 +19,14 @@ namespace Munazara.Web.Controllers
             this.categoryService = categoryService;
         }
 
-        [HttpGet]       
+        [HttpGet]
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             CreateTopicViewModel model = new CreateTopicViewModel
@@ -30,35 +37,33 @@ namespace Munazara.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateTopicViewModel viewModel)
+        [Authorize]
+        public ActionResult Create(CreateTopicViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    CreateTopicRequest reques = new CreateTopicRequest
-                    {
-                        CategoryId = viewModel.Category,
-                        Content = viewModel.Content,
-                        MemberId =1,// Convert.ToInt32(User.Identity.Name),
-                        Title = viewModel.Title
-                    };
-
-                    var topicId = topicService.CreateTopic(reques);
-                    TempData["Success"] = "Başarılı";
-                    return RedirectToAction("Index", new { Id = topicId });
-                }
-                catch(Exception ex)
-                {
-                    Error(ex);
-                    viewModel.Categories = categoryService.GetCategories().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = viewModel.Category == x.Id });
-                    return View(viewModel);
-                }
+                model.Categories = categoryService.GetCategories().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name });
+                return View(model);
             }
-            else
+            try
             {
-                viewModel.Categories = categoryService.GetCategories().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name});
-                return View(viewModel);
+                CreateTopicRequest request = new CreateTopicRequest
+                {
+                    CategoryId = model.Category,
+                    Content = model.Content,
+                    MemberId = Convert.ToInt32(User.Identity.Name),
+                    Title = model.Title
+                };
+
+                var response = topicService.CreateTopic(request);
+                return RedirectToAction("Detail", new { Id = response.Id, Slug = response.Slug });
+            }
+            catch (Exception ex)
+            {
+                Error(ex);
+
+                model.Categories = categoryService.GetCategories().Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = model.Category == x.Id });
+                return View(model);
             }
         }
     }

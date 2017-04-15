@@ -1,17 +1,12 @@
-﻿using Munazara.Application.Data.Reponses;
+﻿using Munazara.Application.DataService.Category.Reponse;
 using Munazara.Data.Repository;
-using Munazara.Domain.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Munazara.Application.Data
+namespace Munazara.Application.DataService.Category
 {
     public class CategoryService : ICategoryService
     {
-      
         private IUnitOfWork uow;
 
         public CategoryService(IUnitOfWork uow)
@@ -21,8 +16,7 @@ namespace Munazara.Application.Data
 
         public List<GetCategoriesResponse> GetCategories()
         {
-            return uow.Repository<Category>().All().Select(x => new GetCategoriesResponse { Id = x.Id, Name = x.Name }).ToList();
-
+            return uow.Repository<Domain.Model.Category>().All().Select(x => new GetCategoriesResponse { Id = x.Id, Name = x.Name }).ToList();
         }
     }
 }

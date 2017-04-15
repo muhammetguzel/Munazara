@@ -9,6 +9,7 @@ namespace Munazara.Domain.Model
         {
             Topics = new HashSet<Topic>();
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

@@ -1,5 +1,8 @@
 ﻿using Autofac;
-using Munazara.Application.Data;
+
+using Munazara.Application.DataService.Category;
+using Munazara.Application.DataService.Member;
+using Munazara.Application.DataService.Topic;
 using Munazara.Data.Repository;
 
 namespace Munazara.Application.IOC
@@ -13,6 +16,7 @@ namespace Munazara.Application.IOC
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<TopicService>().As<ITopicService>();
             builder.RegisterType<CategoryService>().As<ICategoryService>();
+            builder.RegisterType<MemberService>().As<IMemberService>();
             return builder;
         }
     }

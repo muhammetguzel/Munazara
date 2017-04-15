@@ -9,10 +9,10 @@ namespace Munazara.Domain.Model
             CreateDate = DateTime.UtcNow;
         }
 
-        public int Id { get;  set; }
+        public int Id { get; set; }
 
         public string Content { get; set; }
-        public DateTime CreateDate { get;  set; }
+        public DateTime CreateDate { get; set; }
         public int MemberId { get; set; }
         public int TopicId { get; set; }
         public virtual Topic Topic { get; set; }
