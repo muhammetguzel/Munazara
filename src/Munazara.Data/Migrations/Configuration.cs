@@ -16,13 +16,8 @@ namespace Munazara.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+
+            context.Member.AddOrUpdate(new Domain.Model.Member { Email = "admin@yoursite.com", Password = "D033E22AE348AEB5660FC2140AEC35850C4DA997", Type = Domain.Model.MemberType.Admin, UserName = "admin" });
         }
     }
 }

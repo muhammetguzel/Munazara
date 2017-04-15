@@ -2,6 +2,7 @@
 using Munazara.Application.DataService.Member.Response;
 using Munazara.Data.Repository;
 using System.Linq;
+using CodeKicker.BBCode;
 
 namespace Munazara.Application.DataService.Member
 {
@@ -49,7 +50,7 @@ namespace Munazara.Application.DataService.Member
             {
                 var newMember = new Domain.Model.Member
                 {
-                    Avatar = "",
+                    Avatar = "/Content/img/default-avatar.png",
                     Email = request.Email,
                     Password = request.Password,
                     IsActive = true,

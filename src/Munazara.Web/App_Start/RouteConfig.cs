@@ -10,12 +10,6 @@ namespace Munazara.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 "Category",
                 "c/{slug}",
                 new { controller = "Category", action = "Detail", slug = UrlParameter.Optional }
@@ -24,8 +18,13 @@ namespace Munazara.Web
             routes.MapRoute(
                 "Topic",
                 "t/{slug}-{id}",
-                new { controller = "Category", action = "Detail", slug = UrlParameter.Optional, id = UrlParameter.Optional }
+                new { controller = "Topic", action = "Detail", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "Default",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           );
         }
     }
 }

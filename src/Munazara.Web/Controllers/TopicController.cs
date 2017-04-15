@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 namespace Munazara.Web.Controllers
+
 {
     public class TopicController : BaseController
     {
@@ -20,9 +21,14 @@ namespace Munazara.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
-            return View();
+            var model = topicService.GetTopicDetail(id);
+            if (model == null)
+            {
+                return Redirect("/");
+            }
+            return View(model);
         }
 
         [HttpGet]
@@ -56,7 +62,7 @@ namespace Munazara.Web.Controllers
                 };
 
                 var response = topicService.CreateTopic(request);
-                return RedirectToAction("Detail", new { Id = response.Id, Slug = response.Slug });
+                return RedirectToAction("Detail", new { Id = response.Id });
             }
             catch (Exception ex)
             {

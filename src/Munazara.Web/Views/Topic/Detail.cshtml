@@ -1,0 +1,121 @@
+﻿@model Munazara.Application.DataService.Topic.Response.GetTopicDetailResponse
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="row pad-botm">
+    <div class="col-md-12">
+        <h1 class="header-line">@Model.Title</h1>
+        <span class="category-badge" style="background-color: @Model.CategoryColor"></span> <a href="/c/@Model.CategorySlug"><strong>@Model.CategoryName</strong></a>
+
+        <span class="pull-right " style="margin-left: 15px;"> <i class="fa fa-eye fa-lg"></i> &nbsp;@Model.ViewCount</span>
+
+        <span class="pull-right" style="margin-left: 15px;"> <i class="fa fa-reply "></i>  &nbsp;@Model.ReplyCount</span>
+
+        <abbr class="timeago pull-right" style="margin-left: 15px;"
+              title="@Model.CreateDate.ToString("o")">
+          @Model.CreateDate.ToLongDateString()
+        </abbr>
+
+        <time class="pull-right timeago" datetime="@Model.CreateDate"></time>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="alert alert-info ">
+            <ul class="media-list">
+                @foreach (var post in Model.Posts.Take(1))
+                {
+                    <li class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle img-comments" title="@post.MemberUserName" src="@post.MemberAvatar" />
+                        </a>
+                        <div class="media-body">
+
+                            @Html.Raw(CodeKicker.BBCode.BBCode.ToHtml(post.Content))
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="panel panel-warning">
+
+            <div class="panel-body">
+                <ul class="media-list">
+                    @foreach (var post in Model.Posts.Skip(1))
+                    {
+                        <li class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object img-circle img-comments" title="@post.MemberUserName" src="@post.MemberAvatar" />
+                            </a>
+                            <div class="media-body">
+
+                                @Html.Raw(CodeKicker.BBCode.BBCode.ToHtml(post.Content))
+
+                                
+                            </div>
+                            <span class="timeago pull-right" title="@post.CreateDate.ToString("o")">@post.CreateDate.ToLongDateString()</span>
+                        </li>
+                    }
+
+                 
+                </ul>
+            </div>
+        </div>
+       @if( Request.IsAuthenticated){ 
+        <div class="panel panel-success">
+
+            <div class="panel-body">
+                @using (Html.BeginForm("Reply", "Topic", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                   
+                    <div class="form-group">
+                        @*@Html.LabelFor(x => x.Content)*@
+                        <textarea name="Comment" class="form-control"></textarea>
+                      
+                    </div>
+
+                    <button type="submit" class="btn btn-info pull-right">cevapla</button>
+
+                }
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.timeago.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $(".timeago").timeago();
+        });
+       
+    </script>
+
+<script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        height: 250,
+        menubar: false,
+        plugins: [
+            'bbcode  lists link image code',
+        ],
+
+        bbcode_dialect: "punbb",
+        toolbar: 'undo redo   | bold italic underline textcolor code blockquote | alignleft aligncenter alignright alignjustify  | bullist numlist outdent indent | link image',
+        content_css: '//www.tinymce.com/css/codepen.min.css'
+    });
+</script>
+
+}

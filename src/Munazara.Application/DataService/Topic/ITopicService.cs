@@ -9,5 +9,7 @@ namespace Munazara.Application.DataService.Topic
         CreateTopicResponse CreateTopic(CreateTopicRequest request);
 
         List<GetLastTopicsResponse> GetLastTopics();
+
+        GetTopicDetailResponse GetTopicDetail(int id);
     }
 }

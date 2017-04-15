@@ -9,7 +9,7 @@ namespace Munazara.Web.Controllers
         {
         }
 
-        protected void Error(Exception ex)
+        public void Error(Exception ex)
         {
             TempData["Error"] = ex.Message;
         }
