@@ -15,12 +15,21 @@ namespace Munazara.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                        "~/Scripts/custom.js"));
-                        
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                     "~/Scripts/jquery.validate.js",
+                      "~/Scripts/jquery.validate.unobtrusive.js"));
+
+
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/style.css"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

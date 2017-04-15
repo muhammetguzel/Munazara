@@ -19,8 +19,7 @@ namespace Munazara.Web.Controllers
             this.categoryService = categoryService;
         }
 
-        [HttpGet]
-       
+        [HttpGet]       
         public ActionResult Create()
         {
             CreateTopicViewModel model = new CreateTopicViewModel

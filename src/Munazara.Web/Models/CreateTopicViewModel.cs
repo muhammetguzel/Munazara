@@ -21,7 +21,7 @@ namespace Munazara.Web.Models
         public int Category { get; set; }
 
         [Required]
-        [AllowHtml]
+      
         [DisplayName("İçerik")]
         public string Content { get; set; }
 

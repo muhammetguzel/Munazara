@@ -52,22 +52,20 @@
 
 @section scripts {
 
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+  @Scripts.Render("~/bundles/jqueryval")
 
 <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
             selector: 'textarea',
-            height: 500,
+            height: 350,
             menubar: false,
             plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
+                'bbcode  lists link image code',
             ],
-            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+
+            bbcode_dialect: "punbb",
+            toolbar: 'undo redo   | bold italic underline textcolor code blockquote | alignleft aligncenter alignright alignjustify  | bullist numlist outdent indent | link image',
             content_css: '//www.tinymce.com/css/codepen.min.css'
         });
     </script>
